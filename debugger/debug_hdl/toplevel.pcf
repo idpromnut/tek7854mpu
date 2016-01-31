@@ -1,9 +1,11 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Jan 30 17:51:26 2016
+// Written by: Map P.20131013 on Sat Jan 30 19:24:30 2016
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "mojo_tx" LOCATE = SITE "P59" LEVEL 1;
 COMP "clk" LOCATE = SITE "P56" LEVEL 1;
+COMP "idpromnut_tx" LOCATE = SITE "P104" LEVEL 1;
 COMP "led" LOCATE = SITE "P134" LEVEL 1;
 SCHEMATIC END;
 

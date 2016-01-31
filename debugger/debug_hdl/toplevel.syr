@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Reading design: toplevel.prj
@@ -108,6 +108,9 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
+Parsing VHDL file "/home/cmp/git/tek7854mpu/debugger/debug_hdl/serial_tx.vhd" into library work
+Parsing entity <serial_tx>.
+Parsing architecture <behavioral> of entity <serial_tx>.
 Parsing VHDL file "/home/cmp/git/tek7854mpu/debugger/debug_hdl/toplevel.vhd" into library work
 Parsing entity <toplevel>.
 Parsing architecture <Behavioral> of entity <toplevel>.
@@ -118,27 +121,74 @@ Parsing architecture <Behavioral> of entity <toplevel>.
 
 Elaborating entity <toplevel> (architecture <Behavioral>) from library <work>.
 
+Elaborating entity <serial_tx> (architecture <behavioral>) with generics from library <work>.
+
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <toplevel>.
     Related source file is "/home/cmp/git/tek7854mpu/debugger/debug_hdl/toplevel.vhd".
-    Found 25-bit register for signal <counter>.
-    Found 25-bit adder for signal <counter[24]_GND_4_o_add_0_OUT> created at line 1241.
+    Found 31-bit register for signal <rom_addr>.
+    Found 1-bit register for signal <ser_ready_last>.
+    Found 31-bit adder for signal <rom_addr[30]_GND_4_o_add_2_OUT> created at line 60.
+    Found 32x8-bit Read Only RAM for signal <ser_data_in>
     Summary:
+	inferred   1 RAM(s).
 	inferred   1 Adder/Subtractor(s).
-	inferred  25 D-type flip-flop(s).
+	inferred  32 D-type flip-flop(s).
 Unit <toplevel> synthesized.
+
+Synthesizing Unit <serial_tx>.
+    Related source file is "/home/cmp/git/tek7854mpu/debugger/debug_hdl/serial_tx.vhd".
+        width = 8
+        stop_bits = 1
+    Found 1-bit register for signal <baud_clk_edge>.
+    Found 8-bit register for signal <data_shift_reg>.
+    Found 31-bit register for signal <bits_transmitted>.
+    Found 1-bit register for signal <tx_out>.
+    Found 1-bit register for signal <ready>.
+    Found 2-bit register for signal <state>.
+    Found 31-bit register for signal <baud_divider>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | state_init                                     |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 31-bit adder for signal <baud_divider[30]_GND_5_o_add_1_OUT> created at line 44.
+    Found 31-bit adder for signal <bits_transmitted[30]_GND_5_o_add_14_OUT> created at line 113.
+    Found 31-bit 3-to-1 multiplexer for signal <state[1]_bits_transmitted[30]_wide_mux_19_OUT> created at line 61.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  73 D-type flip-flop(s).
+	inferred  13 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <serial_tx> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 1
- 25-bit adder                                          : 1
-# Registers                                            : 1
- 25-bit register                                       : 1
+# RAMs                                                 : 1
+ 32x8-bit single-port Read Only RAM                    : 1
+# Adders/Subtractors                                   : 3
+ 31-bit adder                                          : 3
+# Registers                                            : 8
+ 1-bit register                                        : 4
+ 31-bit register                                       : 3
+ 8-bit register                                        : 1
+# Multiplexers                                         : 13
+ 1-bit 2-to-1 multiplexer                              : 7
+ 31-bit 2-to-1 multiplexer                             : 4
+ 31-bit 3-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
 
 =========================================================================
 
@@ -147,28 +197,68 @@ Macro Statistics
 =========================================================================
 
 
+Synthesizing (advanced) Unit <serial_tx>.
+The following registers are absorbed into counter <baud_divider>: 1 register on signal <baud_divider>.
+Unit <serial_tx> synthesized (advanced).
+
 Synthesizing (advanced) Unit <toplevel>.
-The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
+The following registers are absorbed into counter <rom_addr>: 1 register on signal <rom_addr>.
+INFO:Xst:3231 - The small RAM <Mram_ser_data_in> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <rom_addr<4:0>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <ser_data_in>   |          |
+    -----------------------------------------------------------------------
 Unit <toplevel> synthesized (advanced).
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 1
- 25-bit up counter                                     : 1
+# RAMs                                                 : 1
+ 32x8-bit single-port distributed Read Only RAM        : 1
+# Adders/Subtractors                                   : 1
+ 31-bit adder                                          : 1
+# Counters                                             : 2
+ 31-bit up counter                                     : 2
+# Registers                                            : 43
+ Flip-Flops                                            : 43
+# Multiplexers                                         : 20
+ 1-bit 2-to-1 multiplexer                              : 15
+ 31-bit 2-to-1 multiplexer                             : 4
+ 31-bit 3-to-1 multiplexer                             : 1
+# FSMs                                                 : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <transmitter/FSM_0> on signal <state[1:2]> with gray encoding.
+----------------------------
+ State          | Encoding
+----------------------------
+ state_init     | 00
+ state_startbit | 01
+ state_tx_data  | 11
+ state_stopbits | 10
+----------------------------
 
 Optimizing unit <toplevel> ...
 
+Optimizing unit <serial_tx> ...
+WARNING:Xst:1710 - FF/Latch <transmitter/data_shift_reg_7> (without init value) has a constant value of 0 in block <toplevel>. This FF/Latch will be trimmed during the optimization process.
+
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block toplevel, actual ratio is 0.
+Found area constraint ratio of 100 (+ 5) on block toplevel, actual ratio is 3.
+FlipFlop transmitter/baud_clk_edge has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -176,8 +266,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 25
- Flip-Flops                                            : 25
+# Registers                                            : 107
+ Flip-Flops                                            : 107
 
 =========================================================================
 
@@ -200,19 +290,26 @@ Top Level Output File Name         : toplevel.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 76
+# BELS                             : 389
 #      GND                         : 1
-#      INV                         : 1
-#      LUT1                        : 24
-#      MUXCY                       : 24
+#      INV                         : 4
+#      LUT1                        : 90
+#      LUT2                        : 36
+#      LUT3                        : 3
+#      LUT4                        : 5
+#      LUT5                        : 46
+#      LUT6                        : 20
+#      MUXCY                       : 90
 #      VCC                         : 1
-#      XORCY                       : 25
-# FlipFlops/Latches                : 25
-#      FD                          : 25
+#      XORCY                       : 93
+# FlipFlops/Latches                : 107
+#      FD                          : 69
+#      FDE                         : 7
+#      FDRE                        : 31
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 1
-#      OBUF                        : 1
+# IO Buffers                       : 3
+#      OBUF                        : 3
 
 Device utilization summary:
 ---------------------------
@@ -221,20 +318,20 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              25  out of  11440     0%  
- Number of Slice LUTs:                   25  out of   5720     0%  
-    Number used as Logic:                25  out of   5720     0%  
+ Number of Slice Registers:             107  out of  11440     0%  
+ Number of Slice LUTs:                  204  out of   5720     3%  
+    Number used as Logic:               204  out of   5720     3%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     25
-   Number with an unused Flip Flop:       0  out of     25     0%  
-   Number with an unused LUT:             0  out of     25     0%  
-   Number of fully used LUT-FF pairs:    25  out of     25   100%  
-   Number of unique control sets:         1
+ Number of LUT Flip Flop pairs used:    205
+   Number with an unused Flip Flop:      98  out of    205    47%  
+   Number with an unused LUT:             1  out of    205     0%  
+   Number of fully used LUT-FF pairs:   106  out of    205    51%  
+   Number of unique control sets:         3
 
 IO Utilization: 
- Number of IOs:                           2
- Number of bonded IOBs:                   2  out of    102     1%  
+ Number of IOs:                           4
+ Number of bonded IOBs:                   4  out of    102     3%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -260,7 +357,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 25    |
+clk                                | BUFGP                  | 107   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -271,9 +368,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 2.491ns (Maximum Frequency: 401.485MHz)
+   Minimum period: 5.780ns (Maximum Frequency: 173.010MHz)
    Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: 4.162ns
+   Maximum output required time after clock: 5.213ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -282,69 +379,48 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 2.491ns (frequency: 401.485MHz)
-  Total number of paths / destination ports: 325 / 25
+  Clock period: 5.780ns (frequency: 173.010MHz)
+  Total number of paths / destination ports: 4894 / 176
 -------------------------------------------------------------------------
-Delay:               2.491ns (Levels of Logic = 26)
-  Source:            counter_0 (FF)
-  Destination:       counter_24 (FF)
+Delay:               5.780ns (Levels of Logic = 4)
+  Source:            transmitter/bits_transmitted_21 (FF)
+  Destination:       transmitter/bits_transmitted_23 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: counter_0 to counter_24
+  Data Path: transmitter/bits_transmitted_21 to transmitter/bits_transmitted_23
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               1   0.525   0.681  counter_0 (counter_0)
-     INV:I->O              1   0.255   0.000  Mcount_counter_lut<0>_INV_0 (Mcount_counter_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  Mcount_counter_cy<0> (Mcount_counter_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<1> (Mcount_counter_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<2> (Mcount_counter_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<3> (Mcount_counter_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<4> (Mcount_counter_cy<4>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<5> (Mcount_counter_cy<5>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<6> (Mcount_counter_cy<6>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<7> (Mcount_counter_cy<7>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<8> (Mcount_counter_cy<8>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<9> (Mcount_counter_cy<9>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<10> (Mcount_counter_cy<10>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<11> (Mcount_counter_cy<11>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<12> (Mcount_counter_cy<12>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<13> (Mcount_counter_cy<13>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<14> (Mcount_counter_cy<14>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<15> (Mcount_counter_cy<15>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<16> (Mcount_counter_cy<16>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<17> (Mcount_counter_cy<17>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<18> (Mcount_counter_cy<18>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<19> (Mcount_counter_cy<19>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<20> (Mcount_counter_cy<20>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<21> (Mcount_counter_cy<21>)
-     MUXCY:CI->O           1   0.023   0.000  Mcount_counter_cy<22> (Mcount_counter_cy<22>)
-     MUXCY:CI->O           0   0.023   0.000  Mcount_counter_cy<23> (Mcount_counter_cy<23>)
-     XORCY:CI->O           1   0.206   0.000  Mcount_counter_xor<24> (Result<24>)
-     FD:D                      0.074          counter_24
+     FD:C->Q               3   0.525   1.221  transmitter/bits_transmitted_21 (transmitter/bits_transmitted_21)
+     LUT6:I0->O            1   0.254   0.958  transmitter/GND_5_o_bits_transmitted[30]_equal_14_o<30>14 (transmitter/GND_5_o_bits_transmitted[30]_equal_14_o<30>14)
+     LUT5:I1->O            4   0.254   0.804  transmitter/GND_5_o_bits_transmitted[30]_equal_14_o<30>16 (transmitter/GND_5_o_bits_transmitted[30]_equal_14_o<30>1)
+     LUT6:I5->O           16   0.254   1.182  transmitter/Mmux_state[1]_bits_transmitted[30]_wide_mux_19_OUT1111 (transmitter/Mmux_state[1]_bits_transmitted[30]_wide_mux_19_OUT111)
+     LUT5:I4->O            1   0.254   0.000  transmitter/Mmux_state[1]_bits_transmitted[30]_wide_mux_19_OUT110 (transmitter/state[1]_bits_transmitted[30]_wide_mux_19_OUT<0>)
+     FD:D                      0.074          transmitter/bits_transmitted_0
     ----------------------------------------
-    Total                      2.491ns (1.810ns logic, 0.681ns route)
-                                       (72.7% logic, 27.3% route)
+    Total                      5.780ns (1.615ns logic, 4.165ns route)
+                                       (27.9% logic, 72.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 1 / 1
+  Total number of paths / destination ports: 3 / 3
 -------------------------------------------------------------------------
-Offset:              4.162ns (Levels of Logic = 1)
-  Source:            counter_24 (FF)
+Offset:              5.213ns (Levels of Logic = 2)
+  Source:            transmitter/ready (FF)
   Destination:       led (PAD)
   Source Clock:      clk rising
 
-  Data Path: counter_24 to led
+  Data Path: transmitter/ready to led
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               2   0.525   0.725  counter_24 (counter_24)
+     FD:C->Q               5   0.525   0.840  transmitter/ready (transmitter/ready)
+     INV:I->O              1   0.255   0.681  led1_INV_0 (led_OBUF)
      OBUF:I->O                 2.912          led_OBUF (led)
     ----------------------------------------
-    Total                      4.162ns (3.437ns logic, 0.725ns route)
-                                       (82.6% logic, 17.4% route)
+    Total                      5.213ns (3.692ns logic, 1.521ns route)
+                                       (70.8% logic, 29.2% route)
 
 =========================================================================
 
@@ -356,21 +432,21 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    2.491|         |         |         |
+clk            |    5.780|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.47 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.29 secs
  
 --> 
 
 
-Total memory usage is 127292 kilobytes
+Total memory usage is 127684 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 
