@@ -793,9 +793,9 @@ L14N_2
 Text Label 9600 2700 0    60   ~ 0
 L2N_2
 Text Label 9600 2800 0    60   ~ 0
-L74N_0
+L74N_1
 Text Label 9600 2900 0    60   ~ 0
-L47N_0
+L47N_1
 Text Label 9600 3000 0    60   ~ 0
 L46N_1
 Text Label 9600 3100 0    60   ~ 0
