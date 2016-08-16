@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/chris/Documents/tek7854mpu/debugger/debug_hdl/toplevel.ncd
+OUTFILE=/home/chris/Documents/tek7854mpu/debugger/debug_hdl/toplevel.bit
+FAMILY=Spartan6
+PART=xc6slx9-2tqg144
+WORKINGDIR=/home/chris/Documents/tek7854mpu/debugger/debug_hdl
+LICENSE=WebPack
+USER_INFO=211136897_0_0_672

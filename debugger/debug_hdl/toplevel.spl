@@ -1,0 +1,7 @@
+[Inputs]
+clk
+[Outputs]
+mojo_tx
+idpromnut_tx
+led
+[BiDir]
