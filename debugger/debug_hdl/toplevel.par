@@ -1,7 +1,7 @@
-Release 14.7 par P.20131013 (lin)
+Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-potato::  Sat Jan 30 19:24:33 2016
+cobalt::  Sun Mar 27 22:40:03 2016
 
 par -w -intstyle ise -ol high -mt off toplevel_map.ncd toplevel.ncd
 toplevel.pcf 
@@ -45,12 +45,12 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    59 out of   1,430    4%
+  Number of occupied Slices:                    57 out of   1,430    3%
   Number of MUXCYs used:                        96 out of   2,860    3%
-  Number of LUT Flip Flop pairs used:          197
-    Number with an unused Flip Flop:            91 out of     197   46%
-    Number with an unused LUT:                   1 out of     197    1%
-    Number of fully used LUT-FF pairs:         105 out of     197   53%
+  Number of LUT Flip Flop pairs used:          196
+    Number with an unused Flip Flop:            90 out of     196   45%
+    Number with an unused LUT:                   0 out of     196    0%
+    Number of fully used LUT-FF pairs:         106 out of     196   54%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -61,8 +61,8 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                         4 out of     102    3%
-    Number of LOCed IOBs:                        4 out of       4  100%
+  Number of bonded IOBs:                        11 out of     102   10%
+    Number of LOCed IOBs:                       11 out of      11  100%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -93,36 +93,35 @@ Specific Feature Utilization:
 Overall effort level (-ol):   High 
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 49 secs 
-Finished initial Timing Analysis.  REAL time: 49 secs 
+Starting initial Timing Analysis.  REAL time: 5 secs 
+Finished initial Timing Analysis.  REAL time: 5 secs 
 
-WARNING:Par:289 - The signal led_OBUF has no driver.  PAR will not attempt to route this signal.
 Starting Router
 
 
-Phase  1  : 694 unrouted;      REAL time: 49 secs 
+Phase  1  : 703 unrouted;      REAL time: 5 secs 
 
-Phase  2  : 564 unrouted;      REAL time: 49 secs 
+Phase  2  : 572 unrouted;      REAL time: 6 secs 
 
-Phase  3  : 138 unrouted;      REAL time: 49 secs 
+Phase  3  : 157 unrouted;      REAL time: 6 secs 
 
-Phase  4  : 138 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  4  : 157 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
 Updating file: toplevel.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 50 secs 
-Total REAL time to Router completion: 50 secs 
-Total CPU time to Router completion: 5 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Total REAL time to Router completion: 7 secs 
+Total CPU time to Router completion: 7 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -142,8 +141,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|     5.219ns|     N/A|           0
-  _BUFGP                                    | HOLD        |     0.415ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|     5.044ns|     N/A|           0
+  _BUFGP                                    | HOLD        |     0.437ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -159,18 +158,16 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:284 - There are 1 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
+Total REAL time to PAR completion: 7 secs 
+Total CPU time to PAR completion: 7 secs 
 
-Total REAL time to PAR completion: 50 secs 
-Total CPU time to PAR completion: 5 secs 
-
-Peak Memory Usage:  186 MB
+Peak Memory Usage:  608 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 3
+Number of warning messages: 0
 Number of info messages: 2
 
 Writing design to file toplevel.ncd

@@ -1,22 +1,11 @@
 #-----------------------------------------------------------
 # PlanAhead v14.7 (64-bit)
 # Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
-# Start of session at: Sat Jan 30 17:40:15 2016
-# Process ID: 29163
-# Log file: /home/cmp/git/tek7854mpu/debugger/debug_hdl/planAhead_run_1/planAhead.log
-# Journal file: /home/cmp/git/tek7854mpu/debugger/debug_hdl/planAhead_run_1/planAhead.jou
+# Start of session at: Sat Mar 26 00:25:55 2016
+# Process ID: 5823
+# Log file: /home/chris/Documents/tek7854mpu/debugger/debug_hdl/planAhead_run_1/planAhead.log
+# Journal file: /home/chris/Documents/tek7854mpu/debugger/debug_hdl/planAhead_run_1/planAhead.jou
 #-----------------------------------------------------------
 start_gui
-source /home/cmp/git/tek7854mpu/debugger/debug_hdl/pa.fromHdl.tcl
+source /home/chris/Documents/tek7854mpu/debugger/debug_hdl/pa.fromHdl.tcl
 update_compile_order -fileset sim_1
-startgroup
-set_property package_pin P56 [get_ports clk]
-endgroup
-set_property iostandard LVCMOS25 [get_ports [list clk]]
-set_property iostandard LVCMOS25 [get_ports [list led]]
-set_property iostandard LVCMOS33 [get_ports [list clk]]
-startgroup
-set_property package_pin P134 [get_ports led]
-endgroup
-set_property iostandard LVCMOS33 [get_ports [list led]]
-save_constraints

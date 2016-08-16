@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
-Release 14.7 Trace  (lin)
+Release 14.7 Trace  (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin/unwrapped/trce -intstyle ise -v 3 -s 2 -n 3
--fastpaths -xml toplevel.twx toplevel.ncd -o toplevel.twr toplevel.pcf -ucf
+/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 2 -n
+3 -fastpaths -xml toplevel.twx toplevel.ncd -o toplevel.twr toplevel.pcf -ucf
 toplevel.ucf
 
 Design file:              toplevel.ncd
@@ -37,8 +37,15 @@ Clock clk to Pad
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-idpromnut_tx|        12.049(R)|      SLOW  |         5.629(R)|      FAST  |clk_BUFGP         |   0.000|
-mojo_tx     |        11.316(R)|      SLOW  |         5.198(R)|      FAST  |clk_BUFGP         |   0.000|
+idpromnut_tx|        10.750(R)|      SLOW  |         4.914(R)|      FAST  |clk_BUFGP         |   0.000|
+led0        |        12.075(R)|      SLOW  |         5.413(R)|      FAST  |clk_BUFGP         |   0.000|
+led1        |        11.867(R)|      SLOW  |         5.330(R)|      FAST  |clk_BUFGP         |   0.000|
+led2        |        12.124(R)|      SLOW  |         5.421(R)|      FAST  |clk_BUFGP         |   0.000|
+led3        |        11.986(R)|      SLOW  |         5.334(R)|      FAST  |clk_BUFGP         |   0.000|
+led4        |        11.647(R)|      SLOW  |         5.148(R)|      FAST  |clk_BUFGP         |   0.000|
+led5        |        11.392(R)|      SLOW  |         5.006(R)|      FAST  |clk_BUFGP         |   0.000|
+led6        |        11.572(R)|      SLOW  |         5.055(R)|      FAST  |clk_BUFGP         |   0.000|
+mojo_tx     |        12.842(R)|      SLOW  |         6.093(R)|      FAST  |clk_BUFGP         |   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -46,18 +53,18 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    5.219|         |         |         |
+clk            |    5.044|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sat Jan 30 19:25:30 2016 
+Analysis completed Sun Mar 27 22:40:19 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 137 MB
+Peak Memory Usage: 384 MB
 
 
 

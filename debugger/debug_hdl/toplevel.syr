@@ -1,4 +1,4 @@
-Release 14.7 - xst P.20131013 (lin)
+Release 14.7 - xst P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 Parameter TMPDIR set to xst/projnav.tmp
@@ -12,7 +12,7 @@ Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Reading design: toplevel.prj
@@ -108,10 +108,10 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "/home/cmp/git/tek7854mpu/debugger/debug_hdl/serial_tx.vhd" into library work
+Parsing VHDL file "/home/chris/Documents/tek7854mpu/debugger/debug_hdl/serial_tx.vhd" into library work
 Parsing entity <serial_tx>.
 Parsing architecture <behavioral> of entity <serial_tx>.
-Parsing VHDL file "/home/cmp/git/tek7854mpu/debugger/debug_hdl/toplevel.vhd" into library work
+Parsing VHDL file "/home/chris/Documents/tek7854mpu/debugger/debug_hdl/toplevel.vhd" into library work
 Parsing entity <toplevel>.
 Parsing architecture <Behavioral> of entity <toplevel>.
 
@@ -128,11 +128,11 @@ Elaborating entity <serial_tx> (architecture <behavioral>) with generics from li
 =========================================================================
 
 Synthesizing Unit <toplevel>.
-    Related source file is "/home/cmp/git/tek7854mpu/debugger/debug_hdl/toplevel.vhd".
+    Related source file is "/home/chris/Documents/tek7854mpu/debugger/debug_hdl/toplevel.vhd".
     Found 31-bit register for signal <rom_addr>.
     Found 1-bit register for signal <ser_ready_last>.
-    Found 31-bit adder for signal <rom_addr[30]_GND_4_o_add_2_OUT> created at line 60.
-    Found 32x8-bit Read Only RAM for signal <ser_data_in>
+    Found 31-bit adder for signal <rom_addr[30]_GND_4_o_add_10_OUT> created at line 76.
+    Found 32x8-bit Read Only RAM for signal <n0015[7:0]>
     Summary:
 	inferred   1 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -140,7 +140,7 @@ Synthesizing Unit <toplevel>.
 Unit <toplevel> synthesized.
 
 Synthesizing Unit <serial_tx>.
-    Related source file is "/home/cmp/git/tek7854mpu/debugger/debug_hdl/serial_tx.vhd".
+    Related source file is "/home/chris/Documents/tek7854mpu/debugger/debug_hdl/serial_tx.vhd".
         width = 8
         stop_bits = 1
     Found 1-bit register for signal <baud_clk_edge>.
@@ -203,7 +203,7 @@ Unit <serial_tx> synthesized (advanced).
 
 Synthesizing (advanced) Unit <toplevel>.
 The following registers are absorbed into counter <rom_addr>: 1 register on signal <rom_addr>.
-INFO:Xst:3231 - The small RAM <Mram_ser_data_in> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_n0015[7:0]> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -212,7 +212,7 @@ INFO:Xst:3231 - The small RAM <Mram_ser_data_in> will be implemented on LUTs in 
     |     weA            | connected to signal <GND>           | high     |
     |     addrA          | connected to signal <rom_addr<4:0>> |          |
     |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to signal <ser_data_in>   |          |
+    |     doA            | connected to signal <led0>          |          |
     -----------------------------------------------------------------------
 Unit <toplevel> synthesized (advanced).
 
@@ -290,9 +290,9 @@ Top Level Output File Name         : toplevel.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 389
+# BELS                             : 388
 #      GND                         : 1
-#      INV                         : 4
+#      INV                         : 3
 #      LUT1                        : 90
 #      LUT2                        : 36
 #      LUT3                        : 3
@@ -308,8 +308,8 @@ Primitive and Black Box Usage:
 #      FDRE                        : 31
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 3
-#      OBUF                        : 3
+# IO Buffers                       : 10
+#      OBUF                        : 10
 
 Device utilization summary:
 ---------------------------
@@ -319,19 +319,19 @@ Selected Device : 6slx9tqg144-2
 
 Slice Logic Utilization: 
  Number of Slice Registers:             107  out of  11440     0%  
- Number of Slice LUTs:                  204  out of   5720     3%  
-    Number used as Logic:               204  out of   5720     3%  
+ Number of Slice LUTs:                  203  out of   5720     3%  
+    Number used as Logic:               203  out of   5720     3%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    205
-   Number with an unused Flip Flop:      98  out of    205    47%  
-   Number with an unused LUT:             1  out of    205     0%  
-   Number of fully used LUT-FF pairs:   106  out of    205    51%  
+ Number of LUT Flip Flop pairs used:    204
+   Number with an unused Flip Flop:      97  out of    204    47%  
+   Number with an unused LUT:             1  out of    204     0%  
+   Number of fully used LUT-FF pairs:   106  out of    204    51%  
    Number of unique control sets:         3
 
 IO Utilization: 
- Number of IOs:                           4
- Number of bonded IOBs:                   4  out of    102     3%  
+ Number of IOs:                          11
+ Number of bonded IOBs:                  11  out of    102    10%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -370,7 +370,7 @@ Speed Grade: -2
 
    Minimum period: 5.780ns (Maximum Frequency: 173.010MHz)
    Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: 5.213ns
+   Maximum output required time after clock: 5.822ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -404,23 +404,23 @@ Delay:               5.780ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 3 / 3
+  Total number of paths / destination ports: 37 / 9
 -------------------------------------------------------------------------
-Offset:              5.213ns (Levels of Logic = 2)
-  Source:            transmitter/ready (FF)
-  Destination:       led (PAD)
+Offset:              5.822ns (Levels of Logic = 2)
+  Source:            rom_addr_3 (FF)
+  Destination:       led0 (PAD)
   Source Clock:      clk rising
 
-  Data Path: transmitter/ready to led
+  Data Path: rom_addr_3 to led0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               5   0.525   0.840  transmitter/ready (transmitter/ready)
-     INV:I->O              1   0.255   0.681  led1_INV_0 (led_OBUF)
-     OBUF:I->O                 2.912          led_OBUF (led)
+     FDRE:C->Q             9   0.525   1.406  rom_addr_3 (rom_addr_3)
+     LUT5:I0->O            2   0.254   0.725  Mram_n0015[7:0]11 (Mram_n0015[7:0])
+     OBUF:I->O                 2.912          led0_OBUF (led0)
     ----------------------------------------
-    Total                      5.213ns (3.692ns logic, 1.521ns route)
-                                       (70.8% logic, 29.2% route)
+    Total                      5.822ns (3.691ns logic, 2.131ns route)
+                                       (63.4% logic, 36.6% route)
 
 =========================================================================
 
@@ -438,13 +438,13 @@ clk            |    5.780|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.29 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.21 secs
  
 --> 
 
 
-Total memory usage is 127684 kilobytes
+Total memory usage is 392900 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

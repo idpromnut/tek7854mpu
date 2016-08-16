@@ -3,11 +3,11 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Sat Jan 30 19:27:04 2016">
+<application name="pn" timeStamp="Sun Mar 27 22:40:01 2016">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="8A4348224C8312395B5FDB03E02F1795" type="project"/>
-<property name="ProjectIteration" value="3" type="project"/>
-<property name="ProjectFile" value="/home/cmp/git/tek7854mpu/debugger/debug_hdl/debug_hdl.xise" type="project"/>
+<property name="ProjectIteration" value="10" type="project"/>
+<property name="ProjectFile" value="/home/chris/Documents/tek7854mpu/debugger/debug_hdl/debug_hdl.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2016-01-30T17:35:36" type="project"/>
 </section>
 <section name="Project Statistics" visible="true">
@@ -26,11 +26,12 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_VHDLSourceAnalysisStandard" value="VHDL-200X" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2016-01-30T17:35:36" type="design"/>
 <property name="PROP_intWbtProjectID" value="8A4348224C8312395B5FDB03E02F1795" type="design"/>
-<property name="PROP_intWbtProjectIteration" value="3" type="process"/>
+<property name="PROP_intWbtProjectIteration" value="10" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_lockPinsUcfFile" value="changed" type="process"/>
 <property name="PROP_selectedSimRootSourceNode_behav" value="work.testbench" type="process"/>
+<property name="PROP_xilxBitgStart_IntDone" value="true" type="process"/>
 <property name="PROP_AutoTop" value="true" type="design"/>
 <property name="PROP_DevFamily" value="Spartan6" type="design"/>
 <property name="PROP_DevDevice" value="xc6slx9" type="design"/>

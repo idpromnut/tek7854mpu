@@ -3,10 +3,18 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity toplevel is
-    port (  clk : in std_ulogic;        -- 50 MHz clock
-            mojo_tx : out std_ulogic;       -- Debug data out to PC
-            idpromnut_tx : out std_ulogic;  -- Debug data out to test header
-            led : out std_ulogic );     -- Status LED
+    port (  clk : in std_ulogic;        		-- 50 MHz clock
+            mojo_tx : out std_ulogic;       	-- Debug data out to PC
+            idpromnut_tx : out std_ulogic;  	-- Debug data out to test header
+            led0 : out std_ulogic;				-- Status LED
+				led1 : out std_ulogic;
+				led2 : out std_ulogic;
+				led3 : out std_ulogic;
+				led4 : out std_ulogic;
+				led5 : out std_ulogic;
+				led6 : out std_ulogic;
+				led7 : out std_ulogic
+				);     
 end toplevel;
 
 architecture Behavioral of toplevel is
@@ -48,7 +56,15 @@ idpromnut_tx <= ser_data_out;
 ser_data_in <= data_rom(rom_addr);
 ser_wr <= ser_ready;
 ser_ready_last <= ser_ready when rising_edge(clk);
-led <= not ser_ready;
+--led0 <= not ser_ready;
+led0 <= data_rom(rom_addr)(0);
+led1 <= data_rom(rom_addr)(1);
+led2 <= data_rom(rom_addr)(2);
+led3 <= data_rom(rom_addr)(3);
+led4 <= data_rom(rom_addr)(4);
+led5 <= data_rom(rom_addr)(5);
+led6 <= data_rom(rom_addr)(6);
+led7 <= data_rom(rom_addr)(7);
 
 process(clk, ser_ready)
 begin
